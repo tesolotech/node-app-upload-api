@@ -60,7 +60,7 @@ app.use((req, res, next) => {
 
 app.set('port', process.env.PORT || 3000);
 
-app.post('/uploadFiles', upload.any(), function (req, res, next) {
+app.post('/uploadFiles', upload.array('profile', { maxCount: 12 }), function (req, res, next) {
     console.log(req.files)
     var count = 0;
     if (req.files.length > 0) {
